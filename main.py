@@ -27,7 +27,6 @@ class Window(ctk.CTk):
         self.entry.pack(side="left")
 
     # the function below is activated when the Save button is pressed.
-
     def Write(self):
         pass
 
