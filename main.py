@@ -33,10 +33,11 @@ class Window(ctk.CTk):
     def Write(self):
         self.TextContent = str(self.entry.get(1.0, "end"))
         self.DefaultFileType = ".txt"
+        self.FileName = "file"
         if self.TextContent.find("#include") != -1:
             self.DefaultFileType = ".cpp"
 
-        with open("file"+self.DefaultFileType, "w") as file:
+        with open(self.FileName+self.DefaultFileType, "w") as file:
             file.write(self.TextContent)
 
 window = Window()
