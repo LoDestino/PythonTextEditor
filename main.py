@@ -25,7 +25,7 @@ class Window(ctk.CTk):
 
         self.entry = ctk.CTkTextbox(self.ContentFrame, height=self.TextFrameHeight, width=self.TextFrameWidth)
         self.entry.pack(side="left")
-    # the function below is activated when the Save button is pressed
+    # the function below is activated when the Save button is pressed.
     def Write(self):
         pass
 
