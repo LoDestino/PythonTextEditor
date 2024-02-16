@@ -104,11 +104,8 @@ class Window(ctk.CTk):
                 file.write(content)
 
     def Open(self):
-        path = filedialog.askopenfilename(filetypes=[("All Files", "*")])
-        if path:
-            with open(path, "r") as file:
-                self.entry.delete("1.0", ctk.END)
-                self.entry.insert(ctk.END, file.read())
+        # needs to be updated by Dean
+        pass
 
 
 window = Window()
