@@ -1,5 +1,7 @@
 import tkinter as tk
 import customtkinter as ctk
+from tkinter import filedialog
+
 
 class Window(ctk.CTk):
     def __init__(self):
@@ -22,6 +24,8 @@ class Window(ctk.CTk):
         self.WriteButton = ctk.CTkButton(self.HomeBar, text="Write", command=self.Write)
         self.WriteButton.pack(side="bottom", pady=20)
 
+        self.OpenButton = ctk.CTkButton(self.HomeBar, text="Open", command=self.Open)
+        self.OpenButton.pack(side="bottom", pady=25)
         # The frame contains the text Content and other stuff
         self.ContentFrame = ctk.CTkScrollableFrame(self,height=self.TextFrameHeight, width=self.TextFrameWidth)
         self.ContentFrame.pack(side="right")
@@ -31,14 +35,18 @@ class Window(ctk.CTk):
 
     # the function below is activated when the Save button is pressed.
     def Write(self):
-        self.TextContent = str(self.entry.get(1.0, "end"))
-        self.DefaultFileType = ".txt"
-        self.FileName = "file"
-        if self.TextContent.find("#include") != -1:
-            self.DefaultFileType = ".cpp"
+        path = filedialog.askopenfilename(filetypes=[("Text Files", "*.txt")])
+        if path:
+            with open(path, "w") as file:
+                file.write(self.entry.get("1.0", ctk.END))
+    
+    def Open(self):
+        path = filedialog.askopenfilename(filetypes=[("Text Files", "*.txt")])
+        if path:
+            with open(path, "r") as file:
+                self.entry.delete("1.0", ctk.END)
+                self.entry.insert(ctk.END, file.read()) 
 
-        with open(self.FileName+self.DefaultFileType, "w") as file:
-            file.write(self.TextContent)
-
+    
 window = Window()
 window.mainloop()
