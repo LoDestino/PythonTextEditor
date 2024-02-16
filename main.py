@@ -24,7 +24,7 @@ class Window(ctk.CTk):
         self.TextFrameHeight = 450
 
         # below is the left sidebar, with pack_propagate is being used to keep its own size and not surround shit
-        self.HomeBar = ctk.CTkFrame(self, height=450)
+        self.HomeBar = ctk.CTkFrame(self, height=450, fg_color="#242424")
         self.HomeBar.pack_propagate(False)
         self.HomeBar.pack(side="left")
 
